@@ -1,5 +1,6 @@
 package utils;
 
+import config.ConfigReader;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.FileInputStream;
@@ -11,7 +12,7 @@ public class ExcelUtil {
     public static Map<String, String> readExcelSheet(String sheetName) {
         Map<String, String> data = new HashMap<>();
         try {
-            String path = "src/main/resources/testdata.xlsx";
+            String path = ConfigReader.getProperty("excel.path");
             FileInputStream fis = new FileInputStream(path);
             Workbook workbook = new XSSFWorkbook(fis);
             Sheet sheet = workbook.getSheet(sheetName);
